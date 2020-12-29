@@ -20,23 +20,27 @@
      MOV DL, 0DH
      INT 21H
      MOV DL, 0AH ; line feed
-     INT 21H
-     CMP BL, \"y\" ; compare input character and \"y\"
+     INT 21H  
+     
+     CMP BL, "y" ; compare input character and \"y\"
      JE @DISPLAY ; jump to label @DISPLAY if input=y
-     CMP BL, \"Y\" ; compare input character and \"Y\"
+     CMP BL, "Y" ; compare input character and \"Y\"
      JE @DISPLAY ; jump to label @DISPLAY input=\"Y\"
      LEA DX,MSG_2 ; load and print MSG_2
      MOV AH, 9
-     INT 21H
+     INT 21H  
+     
      JMP @EXIT ; jump to label @EXIT
      @DISPLAY: ; jump label
      LEA DX,MSG_1 ; load and print MSG_1
      MOV AH, 9
-     INT 21H
+     INT 21H   
+     
      MOV AH, 2 ; print the character
      MOV DL, BL
-     INT 21H
-     @EXIT: ; jump label
+     INT 21H 
+     
+     @EXIT: ; jump label  and exit
      MOV AH, 4CH ; return control to DOS
      INT 21H
  MAIN ENDP
