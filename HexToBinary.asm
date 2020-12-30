@@ -11,18 +11,22 @@
 .CODE
  MAIN PROC
      MOV AX, @DATA ; initialize DS
-     MOV DS, AX
+     MOV DS, AX 
+     
      LEA DX, PROMPT_1 ; load and display the string PROMPT_1
      MOV AH,9
-     INT 21H
+     INT 21H  
+     
      JMP @START ; jump to label @START_2
      @START_1: ; jump label
      LEA DX, ILLEGAL ; load and display the string ILLEGAL
      MOV AH, 9
-     INT 21H
+     INT 21H 
+     
      @START: ;
      XOR BX, BX ; clear BX
-     MOV COUNT, 30H ; initialize loop counter
+     MOV COUNT, 30H ; initialize loop counter  
+     
      @START_2: ; jump label
      MOV AH, 1 ; set input function
      INT 21H ; read a character
@@ -65,7 +69,8 @@
      MOV AH, 9
      INT 21H
      MOV CX, 16 ; set CX=16
-     MOV AH, 2 ; set output function
+     MOV AH, 2 ; set output function 
+     
      @LOOP_2: ; loop label
      SHL BX, 1 ; shift BX towards left by 1 position
      JC @ONE ; jump to label @ONE if CF=1
