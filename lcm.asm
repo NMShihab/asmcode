@@ -1,6 +1,6 @@
  data segment
-    n1 dw 000ah  
-    n2 dw 0004h
+    n1 dw 4  
+    n2 dw 3
     
     gcd dw ?
     lcm dw ?
@@ -22,9 +22,9 @@
         jb swap
     
     division:
-        mov dx,0000h
+        mov dx,0
         div bx
-        cmp dx,0000h
+        cmp dx,0
         je ans
         mov ax,dx
         jmp compare 
@@ -38,7 +38,11 @@
         mov bx,n2
         mul bx
         div gcd
-        mov lcm,ax
+        mov lcm,ax 
+        
+        mov ah,2  
+        mov dl,lcm 
+        int 21h 
         
         mov ah,4ch
         int 21h
